@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const originalUrl = params.get('url');
+    const tabId = params.get('tabId'); // Pega o ID da aba que veio na URL
     const continueBtn = document.getElementById('continueBtn');
     const countdownSpan = document.getElementById('countdown');
     const titleEl = document.getElementById('dynamicTitle');
     const msgEl = document.getElementById('dynamicMessage');
 
-    // 1. Combate à Habituação: Mensagens Dinâmicas
+    // 1. Mensagens Dinâmicas (Combate à Habituação)
     const interventions = [
         { title: "Respire fundo...", msg: "O seu objetivo principal é mais importante que este clique." },
         { title: "Cuidado com o piloto automático!", msg: "Você está prestes a quebrar um ciclo de foco." },
@@ -14,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: "Micro-pausa sugerida", msg: "Que tal alongar as costas por 30 segundos em vez de navegar?" }
     ];
 
-    // Escolhe uma mensagem aleatória
     const randomIntervention = interventions[Math.floor(Math.random() * interventions.length)];
     titleEl.textContent = randomIntervention.title;
     msgEl.textContent = randomIntervention.msg;
@@ -33,17 +33,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 1000);
 
-    // Botão Continuar
+    // Botão Continuar - Lógica CORRIGIDA
     continueBtn.addEventListener('click', () => {
-        if (originalUrl) {
-            window.location.href = originalUrl;
+        if (originalUrl && tabId) {
+            // 1. Envia mensagem para o background avisar que vamos pular o bloqueio
+            browser.runtime.sendMessage({
+                action: "allowOverride",
+                url: originalUrl,
+                tabId: parseInt(tabId)
+            }, (response) => {
+                // 2. Só redireciona após receber confirmação (ou logo em seguida)
+                if (browser.runtime.lastError) {
+                    console.log("Erro ao comunicar com background:", browser.runtime.lastError);
+                }
+                window.location.href = originalUrl;
+            });
         }
     });
 
-    // Botão Voltar (Fecha a aba ou vai para uma página em branco)
+    // Botão Voltar
     document.getElementById('closeTabBtn').addEventListener('click', (e) => {
         e.preventDefault();
-        window.close(); // Funciona na maioria dos casos se aberto via popup/script
-        // Alternativa se window.close não funcionar: window.location.href = "about:blank";
+        window.close();
+        // Alternativa se close não funcionar:
+        window.location.href = "about:blank";
     });
 });
