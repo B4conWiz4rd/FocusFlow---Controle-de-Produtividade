@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>FocusFlow</h2>
+            <div class="status-indicator" id="statusIndicator">
+                <span class="dot" id="statusDot"></span>
+                <span id="statusText">Modo Foco: Inativo</span>
+            </div>
+        </header>
+
+        <!-- Toggle Button -->
+        <button id="toggleFocusBtn" class="btn-toggle">Ativar Modo Foco</button>
+
+        <!-- Timer Section (Nudge) -->
+        <div class="timer-section">
+            <p>Tempo de Foco:</p>
+            <div id="timerDisplay">00:00</div>
+        </div>
+
+        <hr>
+
+        <!-- Whitelist Management -->
+        <div class="whitelist-section">
+            <h3>Whitelist (Sites Permitidos)</h3>
+            <p class="small-text">Adicione um site por linha. Ex: google.com</p>
+            <textarea id="whitelistInput" rows="5" placeholder="exemplo.com"></textarea>
+            <button id="saveWhitelistBtn" class="btn-save">Salvar Lista</button>
+        </div>
+
+        <hr>
+
+        <!-- Statistics (Logging) -->
+        <div class="stats-section">
+            <h3>Estatísticas de Hoje</h3>
+            <p>Tentativas de acesso bloqueadas: <strong id="blockCount">0</strong></p>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

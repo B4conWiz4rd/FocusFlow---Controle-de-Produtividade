@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pare e Respire</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="block-container">
+        <div class="message-box">
+            <h1 id="dynamicTitle">Ops!</h1>
+            <p id="dynamicMessage">Este site não está na sua lista de permitidos.</p>
+        </div>
+
+        <div class="intervention-area">
+            <p>Você realmente precisa acessar isso agora?</p>
+            <div class="timer-bar">
+                <span>Aguarde <span id="countdown">5</span>s para continuar</span>
+            </div>
+            
+            <button id="continueBtn" disabled>Continuar mesmo assim</button>
+            <br><br>
+            <a href="#" id="closeTabBtn" class="close-link">Voltar ao foco</a>
+        </div>
+    </div>
+    <script src="block.js"></script>
+</body>
+</html>
