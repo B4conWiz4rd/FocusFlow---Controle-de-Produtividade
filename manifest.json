@@ -37,7 +37,7 @@
     "gecko": {
       "id": "focusflow@tcc.com",
       "data_collection_permissions": {
-        "required": ["browsing_history"],
+        "required": ["none"],
         "optional": []
       }
     }
