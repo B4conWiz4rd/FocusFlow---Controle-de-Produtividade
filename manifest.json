@@ -3,7 +3,7 @@
   "name": "FocusFlow - Controle de Produtividade",
   "version": "1.0",
   "description": "Extensão para promoção de foco e combate ao cyberslacking baseada em nudges.",
-  
+
   "permissions": [
     "storage",
     "tabs",
@@ -30,5 +30,15 @@
     "16": "icon.svg",
     "48": "icon.svg",
     "128": "icon.svg"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "focusflow@tcc.com",
+      "data_collection_permissions": {
+        "required": ["storage", "tabs"],
+        "optional": []
+      }
+    }
   }
 }
