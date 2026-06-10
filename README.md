@@ -21,3 +21,6 @@ Os seguintes arquivos compõem o código-fonte (nenhum deles é minificado ou ge
     styles.css
     icon.svg
     README.md (Este arquivo)
+<hr>
+Você pode instalar oficialmente pelo site de addons da mozzila firefox, futuramente em outros navegadores. <br>
+link https://addons.mozilla.org/pt-BR/firefox/addon/focusflow-guarda-de-aten%C3%A7%C3%A3o/
